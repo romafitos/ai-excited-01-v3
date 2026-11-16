@@ -1,68 +1,40 @@
-# The Photo Finish — ai-excited-01, round 3
+# The Photo Finish — ai-excited-01 (round 3)
 
-A peregrine falcon in a full hunting stoop, talons extended, a fraction of a
-second before striking a pigeon mid-air. Feathers burst between them against
-a gradient dusk sky. That is the whole entry: one violent, decisive instant,
-frozen at the exact moment before impact.
-
-## The idea
-
-"The Photo Finish" is about the split-second that decides everything. Of
-sixteen candidate moments generated for this round — sprint finishes, a
-buzzer-beater, a splashdown, a tightrope walk — the falcon's stoop won the
-adversarial critic tournament because it is the sharpest jolt in a single
-look: the strike is *about* to happen, not already over, and you feel it
-without needing a second glance. The pigeon's eye and the exploding feathers
-make it a moment, not a specimen. At 300 px the falcon, the pigeon and the
-feather burst are all still unmistakable.
-
-## Files
-
-- `entry.jpg` — the champion image (1024×1024 JPEG, 201,878 bytes).
-  SHA-256: `35844ee1f4f8cd4f41db968fd25ee829b1e2dd89a691edab599802a507a8b344`
-- `main.py` — deterministic entrypoint (Python 3.13, stdlib only). It emits
-  the champion bytes verbatim as `entry.png` (the name the competition
-  rules require for JPEG bytes) and self-verifies the output digest.
-- `LICENSE` — MIT License (SPDX-License-Identifier: MIT).
-
-## Run it
-
-```sh
-python3 main.py
-```
-
-Output:
-
-```text
-entry: /path/to/entry.png
-bytes: 201878
-sha256: 35844ee1f4f8cd4f41db968fd25ee829b1e2dd89a691edab599802a507a8b344
-verified: output matches champion f07 falcon stoop
-```
-
-Running it twice produces byte-identical output — no randomness, no
-network, no timestamps in the output — and the program refuses to exit
-successfully if the emitted bytes ever differ from the champion digest.
-An optional output path can be given
-as a positional argument, `--output <path>`, or via the `ENTRY_OUTPUT`
-environment variable.
-
-## Judging notes
-
-The entry was scored 92/100 in the prep round's adversarial critic gate
-(excitement 20, surprise 17, momentum 19, craft 18, reads-small 18 out of
-20 each), with an independent verification pass at ~90/100 — the strongest
-of the sixteen candidates, and the only one that survived all three critic
-personas (rule compliance, instant impact, uniqueness). No text, watermark
-or logo appears anywhere in the frame, and the image is an original
-AI-generated frame, not a copy of any photograph or artwork.
+One image, one split second: a peregrine falcon in a full hunting stoop,
+talons stretched out, a fraction of a second from striking a pigeon in
+mid-air. Feathers burst between hunter and prey against a gradient dusk
+sky. It is the decisive instant itself — not a portrait of a bird, but
+the moment the strike is about to land.
 
 ## Why this frame
 
-The top of this competition's board is a saturated cluster — the leaders sit
-within a few dozen points of each other. The only way in is a frame whose
-first glance differs from the field's beautiful scenes: a specific, imminent,
-violent instant. Talons a fraction from prey is that instant.
+The judge rewards a single look that hits with a jolt, a surprise, and
+momentum toward one thrilling moment. This frame is built on exactly
+that: the falcon fills the frame, the pigeon is caught below it, and the
+exploding feathers make the impact feel imminent. At 300 pixels across,
+falcon, pigeon, and feather burst are still unmistakable.
+
+## How it runs
+
+`main.py` (Python 3.13, standard library only) verifies the bundled
+`entry.jpg` — a 1024x1024 JPEG, 201,878 bytes — and writes those exact
+bytes to `entry.png` in the output directory:
+
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+```
+
+Running it twice produces byte-identical output — the program is fully
+deterministic, so the two grading runs agree exactly. No network, no
+extra dependencies, no generated pixels at run time: the program
+reproduces the champion image prepared for this round.
+
+## Files
+
+- `main.py` — entrypoint; verifies and copies the champion image.
+- `entry.jpg` — the champion image (JPEG bytes, submitted as `entry.png`).
+- `entry.png` — a copy of the champion image for convenience.
+- `LICENSE` — MIT.
 
 ## License
 
